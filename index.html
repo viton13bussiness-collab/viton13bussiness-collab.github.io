@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#050608">
+    <meta
+      name="description"
+      content="Viton13 portfolio: creative development, animated interfaces, web systems, and GitHub projects."
+    >
+    <meta property="og:title" content="Viton13 - Creative Developer Portfolio">
+    <meta
+      property="og:description"
+      content="A fast, animated one-page portfolio for interface engineering and web projects."
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/248777796?v=4">
+    <title>Viton13 - Creative Developer Portfolio</title>
+    <link rel="preconnect" href="https://api.github.com">
+    <link rel="preconnect" href="https://avatars.githubusercontent.com">
+    <link rel="stylesheet" href="styles.css">
+    <noscript>
+      <style>
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body>
+    <canvas id="signal-canvas" aria-hidden="true"></canvas>
+
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="brand" href="#home" aria-label="Viton13 home">
+        <span class="brand-mark">V13</span>
+        <span>Viton13</span>
+      </a>
+      <nav class="nav-links" aria-label="Portfolio sections">
+        <a href="#work">Work</a>
+        <a href="#stack">Stack</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="hero section-shell">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Creative developer / interface systems</p>
+          <h1>Viton13</h1>
+          <p class="hero-text">
+            I build sharp web experiences with motion, clean product thinking,
+            and code that is ready to ship.
+          </p>
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button primary" href="#work">View work</a>
+            <a class="button secondary" href="https://github.com/viton13bussiness-collab" target="_blank" rel="noreferrer">GitHub profile</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-label="GitHub profile card">
+          <img
+            class="avatar"
+            src="https://avatars.githubusercontent.com/u/248777796?v=4"
+            alt="Viton13 GitHub avatar"
+            width="280"
+            height="280"
+          >
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="scanline"></div>
+        </div>
+
+        <div class="metrics reveal" aria-label="GitHub profile metrics">
+          <div>
+            <strong id="repo-count">0</strong>
+            <span>public repos</span>
+          </div>
+          <div>
+            <strong id="follower-count">0</strong>
+            <span>followers</span>
+          </div>
+          <div>
+            <strong id="profile-age">2024</strong>
+            <span>on GitHub</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="motion-strip" aria-hidden="true">
+        <div class="marquee">
+          <span>Interface design</span>
+          <span>Frontend engineering</span>
+          <span>Motion systems</span>
+          <span>GitHub Pages</span>
+          <span>Product polish</span>
+          <span>Automation</span>
+        </div>
+      </div>
+
+      <section id="work" class="section-shell portfolio-section">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Selected work</p>
+          <h2>Public projects and signature builds.</h2>
+          <p>
+            The project feed connects to GitHub and updates when new public
+            repositories are published.
+          </p>
+        </div>
+
+        <div id="repo-grid" class="repo-grid" aria-live="polite">
+          <article class="project-card loading-card">
+            <span class="project-type">Loading</span>
+            <h3>Reading GitHub projects</h3>
+            <p>Fetching the latest public repository data for Viton13.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-shell craft-section">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Build style</p>
+          <h2>Designed to feel alive, engineered to stay fast.</h2>
+        </div>
+
+        <div class="craft-grid">
+          <article class="craft-item reveal">
+            <span>01</span>
+            <h3>Motion with purpose</h3>
+            <p>Transitions, canvas energy, and micro-interactions add depth without blocking the user.</p>
+          </article>
+          <article class="craft-item reveal">
+            <span>02</span>
+            <h3>Clean responsive layout</h3>
+            <p>Every section is built for desktop and mobile with stable spacing and readable hierarchy.</p>
+          </article>
+          <article class="craft-item reveal">
+            <span>03</span>
+            <h3>Public by default</h3>
+            <p>The site is static, portable, and ready for GitHub Pages hosting from the repository root.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="stack" class="section-shell stack-section">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Stack</p>
+          <h2>Tools for polished web products.</h2>
+        </div>
+
+        <div class="stack-grid" aria-label="Technology stack">
+          <div class="stack-pill reveal">HTML</div>
+          <div class="stack-pill reveal">CSS</div>
+          <div class="stack-pill reveal">JavaScript</div>
+          <div class="stack-pill reveal">Animation</div>
+          <div class="stack-pill reveal">GitHub</div>
+          <div class="stack-pill reveal">Deployment</div>
+          <div class="stack-pill reveal">Responsive UI</div>
+          <div class="stack-pill reveal">Product Design</div>
+        </div>
+      </section>
+
+      <section id="contact" class="section-shell contact-section">
+        <div class="contact-copy reveal">
+          <p class="eyebrow">Contact</p>
+          <h2>Ready to turn an idea into a public launch.</h2>
+          <p>
+            Reach out for interface work, portfolio upgrades, landing pages,
+            automation, and GitHub-backed deployments.
+          </p>
+        </div>
+        <div class="contact-actions reveal">
+          <a class="button primary" href="mailto:viton13bussiness@gmail.com">Email me</a>
+          <a class="button secondary" href="https://github.com/viton13bussiness-collab" target="_blank" rel="noreferrer">Open GitHub</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© <span id="year"></span> Viton13</span>
+      <span>Built for GitHub Pages</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
