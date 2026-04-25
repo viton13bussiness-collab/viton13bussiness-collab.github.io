@@ -6,9 +6,9 @@ const profile = {
 
 const fallbackProjects = [
   {
-    name: "GitHub Pages Portfolio",
+    name: "Personal Portfolio",
     description:
-      "A cinematic one-page developer portfolio with live GitHub data, animated canvas visuals, and static hosting.",
+      "A cinematic one-page portfolio for Tarasov Vitaly Alekseevich with live GitHub data, motion, and static hosting.",
     html_url: profile.github,
     language: "JavaScript",
     stargazers_count: 0,
@@ -16,9 +16,9 @@ const fallbackProjects = [
     topic: "Live site",
   },
   {
-    name: "Interface Motion System",
+    name: "Design Department System",
     description:
-      "Responsive sections, scroll reveals, orbital avatar treatment, and performance-conscious motion patterns.",
+      "A professional visual system with structured departments, strong typography, and responsive composition.",
     html_url: profile.github,
     language: "CSS",
     stargazers_count: 0,
@@ -26,9 +26,9 @@ const fallbackProjects = [
     topic: "Design",
   },
   {
-    name: "Public Repository Feed",
+    name: "IT Project Feed",
     description:
-      "This portfolio automatically replaces these showcase cards with real public repositories when they are available.",
+      "The projects section automatically displays public repositories from GitHub when they are available.",
     html_url: profile.github,
     language: "GitHub API",
     stargazers_count: 0,
@@ -176,7 +176,7 @@ function escapeHtml(value) {
 function projectCard(repo, index) {
   const description =
     repo.description ||
-    "A public GitHub project focused on clean code, useful interfaces, and practical delivery.";
+    "A public GitHub project focused on technical delivery, clean product structure, and practical launch value.";
   const updated = repo.updated_at ? `Updated ${formatDate(repo.updated_at)}` : "Portfolio item";
   const type = repo.topic || languageLabel(repo);
   const meta = [
@@ -204,7 +204,6 @@ function projectCard(repo, index) {
 async function loadGitHub() {
   const repoGrid = document.querySelector("#repo-grid");
   const repoCount = document.querySelector("#repo-count");
-  const followerCount = document.querySelector("#follower-count");
   const profileAge = document.querySelector("#profile-age");
 
   try {
@@ -220,7 +219,6 @@ async function loadGitHub() {
     const user = await userResponse.json();
     const repos = await repoResponse.json();
     repoCount.textContent = user.public_repos ?? "0";
-    followerCount.textContent = user.followers ?? "0";
     profileAge.textContent = user.created_at ? new Date(user.created_at).getFullYear() : "2024";
 
     const visibleRepos = repos
