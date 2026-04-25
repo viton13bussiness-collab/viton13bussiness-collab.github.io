@@ -218,8 +218,12 @@ async function loadGitHub() {
 
     const user = await userResponse.json();
     const repos = await repoResponse.json();
-    repoCount.textContent = user.public_repos ?? "0";
-    profileAge.textContent = user.created_at ? new Date(user.created_at).getFullYear() : "2024";
+    if (repoCount) {
+      repoCount.textContent = user.public_repos ?? "0";
+    }
+    if (profileAge) {
+      profileAge.textContent = user.created_at ? new Date(user.created_at).getFullYear() : "2024";
+    }
 
     const visibleRepos = repos
       .filter((repo) => !repo.fork)

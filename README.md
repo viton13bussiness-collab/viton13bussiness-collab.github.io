@@ -11,6 +11,12 @@ Live URL after deployment: `https://viton13bussiness-collab.github.io/`
 - `script.js` - canvas animation, scroll reveal, and live GitHub repository feed
 - `assets/tarasov-vitaly.jpg` - optimized portrait used in the hero section
 
+## Featured Websites
+
+- `https://viton13.com/`
+- `https://riseclub.pro/`
+- `https://innovatione.ru/`
+
 ## Local preview
 
 ```bash

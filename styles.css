@@ -80,37 +80,25 @@ img {
   backdrop-filter: blur(18px);
 }
 
-.brand,
+.brand {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  color: var(--text);
+  font-size: clamp(0.86rem, 1.4vw, 1rem);
+  font-weight: 800;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
-}
-
-.brand {
-  gap: 10px;
-  font-size: 0.96rem;
-  font-weight: 800;
-}
-
-.brand-mark {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  border: 1px solid rgba(232, 255, 88, 0.5);
-  border-radius: 8px;
-  background: #15180d;
-  color: var(--lime);
-  font-size: 0.78rem;
-  letter-spacing: 0;
-}
-
-.nav-links {
   gap: 6px;
 }
 
 .nav-links a {
-  min-width: 82px;
+  min-width: 76px;
   padding: 10px 12px;
   border-radius: 7px;
   color: var(--muted);
@@ -385,6 +373,10 @@ h3 {
 .stack-section,
 .contact-section {
   padding: clamp(72px, 10vw, 128px) 0;
+}
+
+.websites-section {
+  padding-top: 0;
 }
 
 .section-heading {
@@ -693,18 +685,28 @@ h3 {
 
 @media (max-width: 620px) {
   .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
     width: min(calc(100% - 20px), var(--max));
     margin-top: 10px;
   }
 
-  .brand span:last-child {
-    display: none;
+  .brand {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: space-between;
   }
 
   .nav-links a {
-    min-width: 48px;
+    min-width: 0;
+    flex: 1;
     padding-inline: 8px;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
   }
 
   .section-shell,
