@@ -22,15 +22,40 @@
     <link rel="stylesheet" href="styles.css">
     <noscript>
       <style>
+        .preloader {
+          display: none;
+        }
+
         .reveal {
           opacity: 1;
           transform: none;
+        }
+
+        .site-header,
+        .hero-visual,
+        .metrics,
+        .hero-location,
+        .hero-role,
+        .hero-name-marquee {
+          opacity: 1;
+          transform: none;
+        }
+
+        .hero-visual {
+          transform: translateX(-50%);
         }
       </style>
     </noscript>
   </head>
   <body>
     <canvas id="signal-canvas" aria-hidden="true"></canvas>
+    <div class="preloader" aria-hidden="true">
+      <div class="preloader-words">
+        <span>Design</span>
+        <span>Code</span>
+        <span>Launch</span>
+      </div>
+    </div>
 
     <header class="site-header" aria-label="Primary navigation">
       <a class="brand" href="#home" aria-label="Tarasov Vitaly Alekseevich home">Tarasov Vitaly Alekseevich</a>

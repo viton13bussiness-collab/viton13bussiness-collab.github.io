@@ -45,6 +45,8 @@ let width = 0;
 let height = 0;
 let animationFrame = null;
 
+document.body.classList.add("is-loading");
+
 function resizeCanvas() {
   const ratio = Math.min(window.devicePixelRatio || 1, 2);
   width = window.innerWidth;
@@ -151,6 +153,83 @@ function setupReveal() {
   elements.forEach((element) => observer.observe(element));
 }
 
+function setupPreloader() {
+  const ready = () => {
+    window.setTimeout(() => {
+      document.body.classList.add("is-ready");
+      document.body.classList.remove("is-loading");
+    }, 1650);
+  };
+
+  if (document.readyState === "complete") {
+    ready();
+  } else {
+    window.addEventListener("load", ready, { once: true });
+  }
+}
+
+function setupParallax() {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion) return;
+
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const scrollY = window.scrollY;
+    const heroLimit = Math.min(scrollY, window.innerHeight);
+    document.documentElement.style.setProperty("--hero-y", `${heroLimit * 0.08}px`);
+    document.documentElement.style.setProperty("--role-y", `${heroLimit * -0.06}px`);
+    document.documentElement.style.setProperty("--location-y", `${heroLimit * 0.05}px`);
+    document.documentElement.style.setProperty("--metrics-y", `${heroLimit * 0.1}px`);
+    document.documentElement.style.setProperty("--name-y", `${heroLimit * 0.14}px`);
+  };
+
+  const requestUpdate = () => {
+    if (!ticking) {
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+  };
+
+  update();
+  window.addEventListener("scroll", requestUpdate, { passive: true });
+}
+
+function setupMagnetic() {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion || !window.matchMedia("(pointer: fine)").matches) return;
+
+  const targets = document.querySelectorAll(".button, .site-header a, .project-card, .craft-item, .stack-pill");
+  for (const target of targets) {
+    if (target.dataset.magneticReady === "true") continue;
+    target.dataset.magneticReady = "true";
+    target.classList.add("magnetic");
+    target.addEventListener("pointermove", (event) => {
+      const rect = target.getBoundingClientRect();
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+      const strength = target.classList.contains("project-card") || target.classList.contains("craft-item") ? 0.025 : 0.14;
+      target.style.transform = `translate3d(${x * strength}px, ${y * strength}px, 0)`;
+    });
+
+    target.addEventListener("pointerleave", () => {
+      target.style.transform = "";
+    });
+  }
+}
+
+function setupLinkTransitions() {
+  const internalLinks = document.querySelectorAll('a[href^="#"]');
+  for (const link of internalLinks) {
+    link.addEventListener("click", (event) => {
+      const target = document.querySelector(link.getAttribute("href"));
+      if (!target) return;
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+}
+
 function formatDate(dateString) {
   return new Intl.DateTimeFormat("en", {
     month: "short",
@@ -237,6 +316,7 @@ async function loadGitHub() {
   }
 
   setupReveal();
+  setupMagnetic();
 }
 
 function setupCards() {
@@ -253,9 +333,12 @@ function setupCards() {
 
 function init() {
   document.querySelector("#year").textContent = new Date().getFullYear();
-  setupCanvas();
+  setupPreloader();
   setupReveal();
   setupCards();
+  setupParallax();
+  setupMagnetic();
+  setupLinkTransitions();
   loadGitHub();
 }
 
